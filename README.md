@@ -1,4 +1,4 @@
-#HPC POWER COMSUMTION SIMULATOR
+# HPC POWER COMSUMTION SIMULATOR
 
 This project utilizes [SimGrid](https://simgrid.org/ "SimGrid") to simulate power consumption on a High-Performance Computing (HPC) Beowulf cluster system.
 
@@ -6,18 +6,18 @@ It is part of a special problem for my graduate project in Computer Science at K
 
 ------------
 
-##Installation
-###Prerequisites
+## Installation
+### Prerequisites
 - C++ compiler (eg. [g++](https://gcc.gnu.org/ "g++"))
 - [SimGrid](https://simgrid.org/ "SimGrid") installed
 - [CMake](https://cmake.org/ "CMake") for build the project
 
-####Clone the Repository
+#### Clone the Repository
 ```bash
 git clone https://github.com/tkn13/hpc-simulation
 cd hpc-simulation
 ```
-####Build the Simulator
+#### Build the Simulator
 ```bash
 mkdir build
 cd build
@@ -25,7 +25,7 @@ cmake ..
 make
 ```
 
-##Usage
+## Usage
 ```bash
 ./hpc_power_simulator ../platfrom.xml
 ```
