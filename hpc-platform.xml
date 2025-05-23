@@ -5,9 +5,10 @@
         prefix="node-"
         radical="0-4"
         suffix=".science.kmitl.ac.th"
-        speed="1Gf"
         bw="125MBps"
         lat="50us"
         bb_bw="2.25GBps"
-        bb_lat="500us" />
+        bb_lat="500us" 
+        core="16"
+        speed="32Gf"/>
 </platform>
