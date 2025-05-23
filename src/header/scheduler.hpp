@@ -3,13 +3,14 @@
 
 #include <simgrid/s4u.hpp>
 #include "job.hpp"
+#include "worker.hpp"
 
 class Scheduler
 {
     public:
-    std::vector<simgrid::s4u::Host* > workers;
+    std::vector<Worker* > workers;
 
-    explicit Scheduler(std::vector<simgrid::s4u::Host* > hosts);
+    explicit Scheduler(std::vector<Worker*> hosts);
 
     void submitJob(Job* job);
     void checkJob(); //run every second

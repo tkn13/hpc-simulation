@@ -15,17 +15,16 @@ void SchedulerDaemon::run()
 {
     while(true)
     {
-        XBT_INFO("[Daemon] check scheduler");
         this->scheduler->checkJob();
-        sg4::this_actor::sleep_for(1.0);
+        sg4::this_actor::sleep_for(1);
     }
 }
 
-Scheduler::Scheduler(std::vector<sg4::Host*> hosts)
+Scheduler::Scheduler(std::vector<Worker* > hosts)
 {
-    for(sg4::Host* h : hosts)
+    for(Worker* w : hosts)
     {
-        workers.push_back(h);
+        workers.push_back(w);
     }
 }
 
@@ -39,5 +38,26 @@ void Scheduler::submitJob(Job* job)
 
 void Scheduler::checkJob()
 {
-    XBT_INFO("[job was cheked remaining: %ld]", this->jobQueue.size());
+    XBT_INFO("[job was checked remaining: %ld]", this->jobQueue.size());
+    if(jobQueue.size() > 0)
+    {
+        bool isCanAssign = false;
+        Job* job = jobQueue[0];
+
+        for(Worker* h : workers)
+        {
+            if(h->freeProcessor >= job->coreNeed)
+            {
+                h->exec(job->flops, job->coreNeed);
+                isCanAssign = true;
+                break;
+            }
+        }
+
+        if(isCanAssign)
+        {
+            jobQueue.pop_back();
+            XBT_INFO("job wass assigned remaining %ld", this->jobQueue.size());
+        }
+    }
 }

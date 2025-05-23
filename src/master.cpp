@@ -26,7 +26,7 @@ void Master::operator()()
             XBT_INFO("master sending job");
             Job* j = new Job(10.0, 1, 1);
             scheduler->submitJob(j);
-            XBT_INFO("master job");
+            XBT_INFO("master sent job");
         }
     }
     XBT_INFO("master end");
