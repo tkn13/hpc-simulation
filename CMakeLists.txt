@@ -15,7 +15,8 @@ include_directories(${SimGrid_INCLUDE_DIR})
 add_executable(main 
 src/main.cpp
 src/master.cpp
-src/worker.cpp)
+src/worker.cpp
+src/scheduler.cpp)
 
 target_link_libraries(main ${SimGrid_LIBRARY})
 
